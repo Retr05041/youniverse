@@ -23,5 +23,5 @@ type roomData struct {
 	South      *int    `json:"south"`
 	West       *int    `json:"west"`
 	Item       *string `json:"item"`
-	Look       string  `json:"look"`
+	Look       *string `json:"look"`
 }

@@ -18,5 +18,9 @@ run: build
 clean:
 	rm -rf $(BUILD_DIR)
 
+# Test files
+test:
+	go test ./...
+
 # Phony targets to prevent conflict with files
 .PHONY: all build run clean
