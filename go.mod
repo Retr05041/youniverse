@@ -4,6 +4,7 @@ go 1.23.4
 
 require (
 	fyne.io/fyne/v2 v2.5.3
+	github.com/DATA-DOG/go-sqlmock v1.5.2
 	github.com/mattn/go-sqlite3 v1.14.24
 )
 

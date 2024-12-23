@@ -3,12 +3,15 @@ package db
 import (
 	"database/sql"
 
-	// "github.com/mattn/go-sqlite3" - NEEDED FOR LATER USE
+	//"github.com/mattn/go-sqlite3" 
 )
+
+// Made variable for open function for testing - Allows a moch database to be set
+var sqlOpen = sql.Open
 
 // Loads / Creates a database given a map file
 func LoadDatabase(filename string) (*Database,error) {
-	db, err := sql.Open("sqlite3", filename+".db")
+	db, err := sqlOpen("sqlite3", filename+".db")
 	if err != nil {
         return nil, err
 	}
@@ -31,13 +34,13 @@ func (db *Database) InitTables() error {
         player_id INTEGER PRIMARY KEY AUTOINCREMENT,
         player_name TEXT NOT NULL UNIQUE, 
         curr_room_index SMALLINT NOT NULL
-    );
+		);
     CREATE TABLE IF NOT EXISTS inventory(
         inventory_id INTEGER PRIMARY KEY AUTOINCREMENT,
         player_id INTEGER NOT NULL,
         item TEXT NOT NULL,
         FOREIGN KEY (player_id) REFERENCES players(player_id)
-    );
+		);
     `
 
 	_, err := db.instance.Exec(query)
